@@ -1,0 +1,41 @@
+# Build outputs
+*.exe
+*.dll
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.a
+*.map
+
+# Local build folders
+build/
+dist/
+out/
+x64/
+x86/
+Debug/
+Release/
+
+# Tool databases and caches
+*.i64
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+*.rep
+*.ghidra
+.vs/
+
+# Logs and local captures
+*.log
+*.etl
+*.pcap
+*.pcapng
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
