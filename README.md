@@ -51,7 +51,3 @@ experiment-name/
 ## Current Labs
 
 - `01-control-flow/hello-world`: first PE compilation and analysis workflow.
-
-## Safety
-
-These labs are for self-written benign programs. Real malware analysis belongs in an isolated VM and should not be mixed with this repository.
