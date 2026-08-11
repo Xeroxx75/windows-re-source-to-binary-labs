@@ -12,4 +12,4 @@ Labs focused on basic source-to-binary relationships:
 
 ## Experiments
 
-- `hello-world`: first PE build and baseline analysis. test
+- `hello-world`: first PE build and baseline analysis.

@@ -1,7 +1,5 @@
 # Static Analysis - hello-world
 
-Use the vault note `04-PRACTICE/static-analysis-playbook.md` as the checklist. This file is the concrete report for this experiment, not a copy of the whole course note.
-
 ## 0. Context
 
 - Source: self-written `src/hello.c`.
@@ -12,37 +10,36 @@ Use the vault note `04-PRACTICE/static-analysis-playbook.md` as the checklist. T
 
 | Item | Debug | Release |
 | --- | --- | --- |
-| File name |  |  |
-| File type |  |  |
-| Architecture |  |  |
-| Size |  |  |
-| SHA256 |  |  |
-| Compiler hints |  |  |
+| File name | `hello-x64-debug.exe` | `hello-x64-release.exe` |
+| File type | `PE64` | `PE64` |
+| Architecture | `AMD64` | `AMD64` |
+| Size | `241.53 KiB` | `39.00 KiB` |
+| SHA256 | `2c3cf2a368cb1e2a912357874a0dd807c2e4a2b9ab4a869ee1fd378646a` | `3b6e8651314450fc2ccaefb6d592ff28401d3e8481c6c6d2bcfd21f47635bd6a` |
+| Compiler hints | `msvcrt.dll`; `__mingw_app_type`; DIE: MinGW | MinGW-w64 runtime; DIE heuristic: Microsoft Visual C/C++ |
 
 ## 2. PE Structure
 
-| Item | Debug | Release |
-| --- | --- | --- |
-| Subsystem |  |  |
-| Entry point RVA |  |  |
-| Entry point section |  |  |
-| Sections |  |  |
-| TLS callbacks |  |  |
-| Resources |  |  |
-| Relocations |  |  |
+| Item                | Debug        | Release      |
+| ------------------- | ------------ | ------------ |
+| Subsystem           | `WINDOW_CUI` | `WINDOW_CUI` |
+| Entry point RVA     | `000014d0`   | `000014d0`   |
+| Entry point section | `.text`      | `.text`      |
+| Sections            | 19           | 10           |
+| TLS callbacks       | 2            | 2            |
+| Resources           | None         | None         |
+| Relocations         | 4 blocks     | 4 blocks     |
 
 ## 3. Imports
 
 Expected:
 
-- C runtime related imports.
-- Console/output related runtime path.
-- No explicit Win32 file, registry, process, thread or network API from the source.
+- Windows API imports from `KERNEL32.dll`.
+- C runtime (CRT) imports from `msvcrt.dll`.
 
 Observed:
 
-- Debug:
-- Release:
+- Debug: `KERNEL32.dll` & `msvcrt.dll`
+- Release: `KERNEL32.dll` & `msvcrt.dll`
 
 ## 4. Strings
 
@@ -52,8 +49,8 @@ Expected:
 
 Observed:
 
-- Debug:
-- Release:
+- Debug: `Hello, Windows reverse engineering!`
+- Release: `Hello, Windows reverse engineering!`
 
 ## 5. Ghidra Notes
 

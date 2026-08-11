@@ -1,7 +1,5 @@
 # Dynamic Analysis - hello-world
 
-Use the vault note `04-PRACTICE/dynamic-analysis-playbook.md` as the checklist. This file records what happened during execution.
-
 ## 0. Preparation
 
 - VM:
